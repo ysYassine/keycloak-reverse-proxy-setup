@@ -1,0 +1,15 @@
+https://localhost {
+    handle /auth/realms/* {
+        reverse_proxy keycloak:8080
+    }
+
+    handle /auth/resources/* {
+        reverse_proxy keycloak:8080
+    }
+
+    handle {
+        root * /usr/share/caddy
+        rewrite * /404.html
+        file_server
+    }
+}
